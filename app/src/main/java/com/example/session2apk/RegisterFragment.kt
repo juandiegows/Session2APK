@@ -65,13 +65,14 @@ class RegisterFragment : Fragment() {
                 }
             )
         }else {
+            user.Id = Singleton.userLogin.Id
             CallServicesJD.startQuery("api/usuarios/${Singleton.userLogin.Id}",
                 CallServicesJD.Companion.method.PUT,
                 user.toJson(),
                 object : ServicesJD {
                     override fun Finish(response: String, status: Int) {
                         requireActivity().runOnUiThread {
-                            if (status == HTTP.CREATED) {
+                            if (status == HTTP.UPDATE) {
                                 requireContext().AlertOK(
                                     "cambios aplicados correctamente",
                                     "Se ha actualizado"
@@ -111,9 +112,9 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         if (Singleton.statusRegister != Singleton.STAT.REGISTER)
             binding.buttonSecond.isVisible = false
-        if (Singleton.statusRegister != Singleton.STAT.ADD)
+        if (Singleton.statusRegister == Singleton.STAT.ADD)
             binding.btnRegister.setText("Add")
-        else if (Singleton.statusRegister != Singleton.STAT.UPDATE){
+        else if (Singleton.statusRegister == Singleton.STAT.UPDATE){
             with (binding){
                 btnRegister.setText("Update")
                 with(Singleton.userLogin){

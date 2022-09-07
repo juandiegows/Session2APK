@@ -4,5 +4,6 @@ object HTTP {
     val UnAuth = 401
     val OK = 200
     val CREATED = 201
+    val UPDATE = 204
     val BadRequest = 400
 }

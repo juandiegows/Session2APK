@@ -14,7 +14,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.navigation.Navigation
 import com.example.session2apk.Helper.Singleton
 import com.example.session2apk.databinding.ActivityMainBinding
@@ -34,9 +33,9 @@ class MainActivity : AppCompatActivity() {
             R.id.itemLoginOut -> {
                 startActivity(Intent(this, LoginActivity::class.java))
             }
-            R.id.additemMenu->{
+            R.id.additemMenu -> {
                 Singleton.statusRegister = Singleton.STAT.ADD
-               Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.registerFragment)
+                toGoUpdateAddUser()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -61,7 +60,10 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.listUserFragment, R.id.aboutFragment, R.id.seleccionFragment, R.id.registerFragment
+                R.id.listUserFragment,
+                R.id.aboutFragment,
+                R.id.seleccionFragment,
+                R.id.registerFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -69,7 +71,25 @@ class MainActivity : AppCompatActivity() {
         var binding2: NavHeaderMainBinding = NavHeaderMainBinding.bind(navView.getHeaderView(0))
         binding2.txtName.setText("${Singleton.userLogin.Nome} ${Singleton.userLogin.Apelido}")
         binding2.txtEmailNav.setText(Singleton.userLogin.Email)
-       
+        binding2.txtName.setOnClickListener {
+            toGoUpdateUser()
+        }
+        binding2.txtEmailNav.setOnClickListener {
+            toGoUpdateUser()
+        }
+        binding2.imageView.setOnClickListener {
+            toGoUpdateUser()
+        }
+    }
+
+    private fun toGoUpdateUser() {
+        Singleton.statusRegister = Singleton.STAT.UPDATE
+        toGoUpdateAddUser()
+    }
+
+    private fun toGoUpdateAddUser() {
+        Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+            .navigate(R.id.registerFragment)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
