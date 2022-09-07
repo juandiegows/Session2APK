@@ -131,29 +131,36 @@ fun TextInputEditText.IsEmail(layout: TextInputLayout) {
 
 private fun TextInputEditText.ValidarCorreo(layout: TextInputLayout) {
     layout.error = ""
+
     if (!Patterns.EMAIL_ADDRESS.matcher(this.TextJD).matches()) {
         layout.error = "it isn't email valid"
     } else
-    if (Pattern.matches("^[a-zA-Z]{1,1}[a-zA-Z0-9]{3}[-._]{1}[A-Za-z0-9]{0,4}@", this.TextJD)) {
-        Log.e("TAG", "ValidarCorreo:")
-        if (Pattern.matches(
-                "^[a-zA-Z]{1,1}[a-zA-Z0-9]{3}[-._]{1}[A-Za-z0-9]{4}@[A-Za-z]{3}.[A-Za-z]{2}$",
+        if (Regex(
+                "^[a-zA-Z]{1,1}+[a-zA-Z0-9]{3,20}+[-._]{1}+[A-Za-z0-9]{0,20}+@[a-zA-Z]{3,20}.[a-zA-Z]{2,10}"
+            ).matches(
                 this.TextJD
             )
         ) {
-            layout.error = ""
-        } else if (Pattern.matches(
-                "^[a-zA-Z]{1,1}[a-zA-Z0-9]{7}@[A-Za-z]{3}.[A-Za-z]{2}$",
-                this.TextJD
-            )
-        ) {
-            layout.error = ""
+            Log.e("TAG", "ValidarCorreo:")
+            if (Pattern.matches(
+                    "^[a-zA-Z]{1,1}+[a-zA-Z0-9]{3,20}+[-._]{1,1}+[A-Za-z0-9]{4,20}+@[A-Za-z]{3,15}+.[A-Za-z]{2,15}",
+                    this.TextJD
+                )
+            ) {
+                layout.error = ""
+            } else {
+                layout.error = "this email isn't valid, please to ckeck"
+            }
         } else {
-            layout.error = "this email isn't valid, please to ckeck"
+            if (Pattern.matches(
+                    "^[a-zA-Z]{1,1}+[a-zA-Z0-9]{7,20}+@[A-Za-z]{3,15}+.[A-Za-z]{2,15}",
+                    this.TextJD
+                )
+            )
+                layout.error = ""
+            else
+                layout.error = "Required to start by letter A-Za-z"
         }
-    } else {
-        layout.error = "Required to start by letter A-Za-z"
-    }
 }
 
 fun TextInputEditText.EqualsTo(layout: TextInputLayout, text: TextInputEditText) {

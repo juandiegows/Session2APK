@@ -28,6 +28,27 @@ class LoginFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    init {
+        var texto = "asdadA34.hghjh8jjhk@"
+        var patternsJD = "^[a-zA-Z]{1}+[a-zA-Z0-9]{3,15}+[._-]{1}+[a-zA-Z0-9]{0,15}+@"
+        var regex= Regex(patternsJD)
+
+        val matched1 = regex.matches(input = "Yabcdy-@")
+        val matched2 = regex.matches(input = "bcdyabScd_@")
+        val matched3 = regex.matches(input = "abcd..@")
+        val matched4 = regex.matches(texto)
+        println("1) $matched1")
+        println("2) $matched2")
+        println("3) $matched3")
+        println("4) $matched4")
+        Log.e(
+            "Result", "Text : $texto\n" +
+                    "Pattern : $patternsJD \n" +
+                    "Valido = ${regex.matches(texto)}\n" +
+                    "Patterns esperando : ${texto.toRegex()}"
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
