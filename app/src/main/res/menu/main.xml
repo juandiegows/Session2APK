@@ -7,9 +7,17 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/additemMenu"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:orderInCategory="1"
+        android:title="add"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/itemLoginOut"
         android:icon="@drawable/ic_baseline_login_24"
+        android:orderInCategory="2"
         android:title="Login out"
         android:visible="true"
         app:showAsAction="always" />
+
 </menu>

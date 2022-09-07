@@ -3,18 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="all">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Inicio"
+            android:id="@+id/listUserFragment"
+            />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_baseline_group_24"
+            android:title="Seleccion"
+            android:id="@+id/seleccionFragment"
+            />
     </group>
+    <item
+        android:gravity="bottom"
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="about apk" />
 </menu>

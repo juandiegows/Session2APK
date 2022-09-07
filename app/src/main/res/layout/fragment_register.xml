@@ -13,6 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="#F6F5F5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
@@ -22,6 +23,7 @@
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:hint="Name User or email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +60,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#F6F5F5"
+        app:layout_constraintEnd_toEndOf="@+id/txtSUser"
         app:layout_constraintStart_toStartOf="@+id/txtSUser"
         app:layout_constraintTop_toBottomOf="@+id/txtSUser"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
@@ -67,6 +70,7 @@
             android:id="@+id/txtSurName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:hint="sur name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +79,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#F6F5F5"
+        app:layout_constraintEnd_toEndOf="@+id/txtSSurName"
         app:layout_constraintStart_toStartOf="@+id/txtSSurName"
         app:layout_constraintTop_toBottomOf="@+id/txtSSurName"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
@@ -84,6 +89,7 @@
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,6 +98,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#F6F5F5"
         app:layout_constraintEnd_toEndOf="@+id/txtSEmail"
         app:layout_constraintStart_toStartOf="@+id/txtSEmail"
         app:layout_constraintTop_toBottomOf="@+id/txtSEmail"
@@ -102,6 +109,7 @@
             android:id="@+id/txtpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:hint="Password"
             android:password="true" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -121,6 +129,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#F6F5F5"
         app:layout_constraintEnd_toEndOf="@+id/txtSPass"
         app:layout_constraintStart_toStartOf="@+id/txtSPass"
         app:layout_constraintTop_toBottomOf="@+id/txtSPass"
@@ -131,6 +140,7 @@
             android:id="@+id/txtCPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:hint="Confirm password"
             android:password="true" />
     </com.google.android.material.textfield.TextInputLayout>
