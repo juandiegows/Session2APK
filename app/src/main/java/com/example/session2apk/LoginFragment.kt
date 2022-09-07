@@ -23,6 +23,7 @@ import org.json.JSONObject
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
+    lateinit var listView: List<View>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,7 +32,7 @@ class LoginFragment : Fragment() {
     init {
         var texto = "asdadA34.hghjh8jjhk@"
         var patternsJD = "^[a-zA-Z]{1}+[a-zA-Z0-9]{3,15}+[._-]{1}+[a-zA-Z0-9]{0,15}+@"
-        var regex= Regex(patternsJD)
+        var regex = Regex(patternsJD)
 
         val matched1 = regex.matches(input = "Yabcdy-@")
         val matched2 = regex.matches(input = "bcdyabScd_@")
@@ -69,6 +70,7 @@ class LoginFragment : Fragment() {
                     }
             }
         }
+        listView = listOf(binding.txtSUser, binding.txtSPassword)
         eventos()
         return binding.root
 
@@ -84,7 +86,7 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         binding.btnLogin.setOnClickListener {
-            if (binding.txtUser.IsCorrect(binding.txtSUser) && binding.txtPassword.IsCorrect(binding.txtSPassword)) {
+            if (listView.ISCorrecto()) {
 
 
                 CallServicesJD.startQuery("api/auth", CallServicesJD.Companion.method.POST,
@@ -105,7 +107,7 @@ class LoginFragment : Fragment() {
                                         binding.txtRegister.animate().alpha(1f).setDuration(2000)
                                             .start()
                                     } else if (status == HTTP.OK) {
-
+                                        Singleton.userLogin = JSONObject(response).toClass(User::class.java.name).Cast()
                                         startActivity(
                                             Intent(
                                                 requireContext(),

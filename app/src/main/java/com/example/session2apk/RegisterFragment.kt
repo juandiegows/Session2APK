@@ -1,14 +1,17 @@
 package com.example.session2apk
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.session2apk.Helper.EqualsTo
-import com.example.session2apk.Helper.IsEmail
-import com.example.session2apk.Helper.Requerido
+import com.example.session2apk.Helper.*
+import com.example.session2apk.Model.User
+import com.example.session2apk.Network.CallServicesJD
+import com.example.session2apk.Network.ServicesJD
 import com.example.session2apk.databinding.FragmentRegisterBinding
 
 /**
@@ -21,6 +24,45 @@ class RegisterFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var listView: List<View>
+
+
+    fun saveUsuario(user: User) {
+        CallServicesJD.startQuery("api/usuarios",
+            CallServicesJD.Companion.method.POST,
+            user.toJson(),
+            object : ServicesJD {
+                override fun Finish(response: String, status: Int) {
+                    requireActivity().runOnUiThread {
+                        if (status == HTTP.CREATED) {
+                            requireContext().AlertOK(
+                                "cambios aplicados correctamente",
+                                "Se ha registrado un nuevo usuario"
+                            )
+                        } else {
+                            requireContext().AlertOK(
+                                "no se ha guardado los cambios",
+                                "$status $response"
+                            )
+                        }
+                        Log.e("Finish", "Finish: $status $response")
+                    }
+
+                }
+
+                override fun Error(response: String, status: Int) {
+                    requireActivity().runOnUiThread {
+                        requireContext().AlertOK(
+                            "no se ha guardado los cambios",
+                            "$status $response"
+                        )
+                        Log.e("Finish", "Finish: $status $response")
+                    }
+
+                }
+            }
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +70,48 @@ class RegisterFragment : Fragment() {
     ): View? {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        binding.txtUser.Requerido(binding.txtSUser,3)
-        binding.txtSurName.Requerido(binding.txtSSurName,3)
-        binding.txtpass.Requerido(binding.txtSPass,3)
-        binding.txtCPass.EqualsTo(binding.txtSCPass, binding.txtCPass)
-        binding.txtEmail.IsEmail(binding.txtSEmail)
+
+        with(binding) {
+            txtUser.Requerido(txtSUser, 3)
+            txtSurName.Requerido(txtSSurName, 3)
+            txtpass.Requerido(txtSPass, 3)
+            txtCPass.EqualsTo(txtSCPass, txtpass)
+            txtEmail.IsEmail(txtSEmail)
+            listView = listOf(txtSUser, txtSPass, txtSEmail, txtSCPass, txtSSurName)
+        }
+        binding.btnRegister.setOnClickListener {
+            if (listView.ISCorrecto()) {
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Alert")
+                    .setMessage("Do you want apply in the database? ")
+                    .setPositiveButton("yes, Save") { _, _ ->
+                        with(binding) {
+                            saveUsuario(User().apply {
+                                Id = 0
+                                Apelido = txtSurName.TextJD
+                                Bloqueado = false
+                                Email = txtEmail.TextJD
+                                Nome = txtUser.TextJD
+
+                                if (ckAdmin.isChecked) {
+                                    Perfil = "Administrador"
+                                } else {
+                                    Perfil = "Usuario"
+                                }
+                                Senha = txtpass.TextJD
+
+
+                            })
+                        }
+
+                    }
+                    .setNegativeButton("No") { _, _ ->
+
+                    }.create().show()
+            } else {
+                requireContext().AlertOK("all field are required", "please introduce all field")
+            }
+        }
         return binding.root
 
     }

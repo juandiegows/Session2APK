@@ -7,5 +7,5 @@ class User {
     var Apelido = ""
     var Senha = ""
     var Perfil = ""
-    var Bloqueado = ""
+    var Bloqueado = true
 }

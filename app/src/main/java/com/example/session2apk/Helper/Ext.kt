@@ -6,6 +6,8 @@ import android.service.quicksettings.Tile
 import android.text.Editable
 import android.util.Log
 import android.util.Patterns
+import android.view.View
+import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -129,6 +131,29 @@ fun TextInputEditText.IsEmail(layout: TextInputLayout) {
 
 }
 
+fun List<View>.ISCorrecto(): Boolean {
+
+    this.forEach {
+        it.requestFocus()
+        it.clearFocus()
+        if (this is TextInputEditText) {
+            if (!(this as TextInputEditText).error.isNullOrEmpty()) {
+                return false
+            }
+        } else if (this is EditText) {
+            if (!(this as EditText).error.isNullOrEmpty()) {
+                return false
+            }
+        } else if (this is TextInputLayout) {
+            if (!(this as TextInputLayout).error.isNullOrEmpty()) {
+
+                return false
+            }
+        }
+    }
+    return true
+}
+
 private fun TextInputEditText.ValidarCorreo(layout: TextInputLayout) {
     layout.error = ""
 
@@ -193,8 +218,4 @@ private fun Validar(
     }
 }
 
-fun TextInputEditText.IsCorrect(layout: TextInputLayout): Boolean {
-    Validar(layout, this.text)
-    return layout.error.isNullOrEmpty()
-}
 

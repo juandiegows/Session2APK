@@ -14,7 +14,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.session2apk.Helper.Singleton
 import com.example.session2apk.databinding.ActivityMainBinding
+import com.example.session2apk.databinding.NavHeaderMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        var binding2:NavHeaderMainBinding = NavHeaderMainBinding.bind(navView.getHeaderView(0) )
+        binding2.txtName.setText("${Singleton.userLogin.Nome} ${Singleton.userLogin.Apelido}")
+        binding2.txtEmailNav.setText(Singleton.userLogin.Email)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

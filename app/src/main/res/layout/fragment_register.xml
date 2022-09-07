@@ -110,9 +110,9 @@
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/txtSPass"
         app:layout_constraintStart_toStartOf="@+id/txtSPass"
         app:layout_constraintTop_toBottomOf="@+id/txtSCPass" />
 
@@ -134,4 +134,13 @@
             android:hint="Confirm password"
             android:password="true" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Switch
+        android:id="@+id/ckAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Administrador"
+        app:layout_constraintStart_toEndOf="@+id/btnRegister"
+        app:layout_constraintTop_toTopOf="@+id/btnRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>
