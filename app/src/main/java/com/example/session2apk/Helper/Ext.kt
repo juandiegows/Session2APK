@@ -2,8 +2,11 @@ package com.example.session2apk.Helper
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.service.quicksettings.Tile
 import android.text.Editable
+import android.util.Base64
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -14,7 +17,11 @@ import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.logging.SimpleFormatter
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 import kotlin.reflect.javaType
 import kotlin.reflect.typeOf
 
@@ -132,26 +139,26 @@ fun TextInputEditText.IsEmail(layout: TextInputLayout) {
 }
 
 fun List<View>.ISCorrecto(): Boolean {
-
+    var valido = true
     this.forEach {
         it.requestFocus()
         it.clearFocus()
-        if (this is TextInputEditText) {
-            if (!(this as TextInputEditText).error.isNullOrEmpty()) {
-                return false
+        if (it is TextInputEditText) {
+            if (!(it as TextInputEditText).error.isNullOrEmpty()) {
+                valido = false
             }
-        } else if (this is EditText) {
-            if (!(this as EditText).error.isNullOrEmpty()) {
-                return false
+        } else if (it is EditText) {
+            if (!(it as EditText).error.isNullOrEmpty()) {
+                valido = false
             }
-        } else if (this is TextInputLayout) {
-            if (!(this as TextInputLayout).error.isNullOrEmpty()) {
+        } else if (it is TextInputLayout) {
+            if (!(it as TextInputLayout).error.isNullOrEmpty()) {
 
-                return false
+                valido = false
             }
         }
     }
-    return true
+    return valido
 }
 
 private fun TextInputEditText.ValidarCorreo(layout: TextInputLayout) {
@@ -218,4 +225,19 @@ private fun Validar(
     }
 }
 
+fun String.toImage(): Bitmap? {
+    var byte = Base64.decode(this, Base64.DEFAULT)
+    return BitmapFactory.decodeByteArray(byte, 0,byte.size )
+}
+fun String.toDate(format: String = "yyyy-MM-dd"): Calendar {
+    try {
+        return Calendar.getInstance().apply {
+            time = SimpleDateFormat(format).parse(this@toDate).apply {
+                month +=1
+            }
 
+        }
+    } catch (e: Exception) {
+        return  Calendar.getInstance()
+    }
+}

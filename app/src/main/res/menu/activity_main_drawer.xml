@@ -7,13 +7,16 @@
         <item
             android:icon="@drawable/ic_baseline_home_24"
             android:title="Inicio"
-            android:id="@+id/listUserFragment"
+
             />
         <item
             android:icon="@drawable/ic_baseline_group_24"
-            android:title="Seleccion"
+            android:title="List User"
+            android:id="@+id/listUserFragment"/>
+        <item
             android:id="@+id/seleccionFragment"
-            />
+            android:icon="@drawable/trophy"
+            android:title="Seleccion" />
     </group>
     <item
         android:gravity="bottom"

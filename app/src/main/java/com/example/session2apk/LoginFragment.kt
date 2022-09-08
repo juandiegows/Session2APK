@@ -56,7 +56,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        binding.txtSUser.animate().translationY(-1500f).setDuration(2000).withStartAction {
+      /*  binding.txtSUser.animate().translationY(-1500f).setDuration(2000).withStartAction {
             binding.txtSPassword.animate().translationY(-1500f).setDuration(2000).withStartAction {
                 binding.txtSPassword.animate().translationY(-1500f).setDuration(2000)
                     .withStartAction {
@@ -69,7 +69,7 @@ class LoginFragment : Fragment() {
                             }
                     }
             }
-        }
+        }*/
         listView = listOf(binding.txtSUser, binding.txtSPassword)
         eventos()
         return binding.root
@@ -142,7 +142,7 @@ class LoginFragment : Fragment() {
                     }
                 )
             } else {
-                requireContext().AlertOK("all field required", "you will to fill all fieldJua")
+                requireContext().AlertOK("all field required", "you will to fill all field")
             }
         }
     }

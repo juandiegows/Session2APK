@@ -4,6 +4,7 @@ import com.example.session2apk.Model.User
 
 object Singleton {
     lateinit var userLogin:User
+    lateinit var userLoginEdit:User
     enum class STAT {
         REGISTER, ADD, UPDATE
     }

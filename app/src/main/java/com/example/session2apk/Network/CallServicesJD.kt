@@ -39,7 +39,7 @@ class CallServicesJD {
                     return@launch
                 }
                 if(client.inputStream!=null){
-                    Log.e("TAG", "startQuery: ${client.responseCode}" )
+                    Log.e("TAG", "startQuery: ${client.responseCode} ${client.responseMessage}" )
                     client.inputStream.bufferedReader().use {
                         Services.Finish(it.readLine()?:"",client.responseCode)
                     }

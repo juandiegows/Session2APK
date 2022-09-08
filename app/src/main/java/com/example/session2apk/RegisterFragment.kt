@@ -41,6 +41,9 @@ class RegisterFragment : Fragment() {
                                     "cambios aplicados correctamente",
                                     "Se ha registrado un nuevo usuario"
                                 )
+                                if(Singleton.statusRegister ==Singleton.STAT.ADD){
+                                    this@RegisterFragment.requireActivity().onBackPressed()
+                                }
                             } else {
                                 requireContext().AlertOK(
                                     "no se ha guardado los cambios",
@@ -65,8 +68,8 @@ class RegisterFragment : Fragment() {
                 }
             )
         }else {
-            user.Id = Singleton.userLogin.Id
-            CallServicesJD.startQuery("api/usuarios/${Singleton.userLogin.Id}",
+            user.Id = Singleton.userLoginEdit.Id
+            CallServicesJD.startQuery("api/usuarios/${Singleton.userLoginEdit.Id}",
                 CallServicesJD.Companion.method.PUT,
                 user.toJson(),
                 object : ServicesJD {
@@ -77,6 +80,7 @@ class RegisterFragment : Fragment() {
                                     "cambios aplicados correctamente",
                                     "Se ha actualizado"
                                 )
+
                             } else {
                                 requireContext().AlertOK(
                                     "no Se ha actualizado los cambios",
@@ -112,12 +116,19 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         if (Singleton.statusRegister != Singleton.STAT.REGISTER)
             binding.buttonSecond.isVisible = false
-        if (Singleton.statusRegister == Singleton.STAT.ADD)
+        if (Singleton.statusRegister == Singleton.STAT.ADD) {
             binding.btnRegister.setText("Add")
+            if (this@RegisterFragment.requireActivity() is MainActivity){
+                (this@RegisterFragment.requireActivity() as MainActivity).setTitulo("Add User")
+            }
+        }
         else if (Singleton.statusRegister == Singleton.STAT.UPDATE){
+            if (this@RegisterFragment.requireActivity() is MainActivity){
+                (this@RegisterFragment.requireActivity() as MainActivity).setTitulo("update")
+            }
             with (binding){
                 btnRegister.setText("Update")
-                with(Singleton.userLogin){
+                with(Singleton.userLoginEdit){
                     txtEmail.TextJD = Email
                     txtpass.TextJD = Senha
                     txtCPass.TextJD = Senha

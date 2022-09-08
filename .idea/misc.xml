@@ -5,16 +5,22 @@
       <map>
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/activity_fullscreen.xml" value="0.33" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/activity_login.xml" value="0.15462962962962962" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/activity_main.xml" value="0.27340129749768305" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/content_login.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/content_main.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_about.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_about.xml" value="0.3557993730407524" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_first.xml" value="0.1783625730994152" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_home.xml" value="0.2911500641299701" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_list_user.xml" value="0.21" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_login.xml" value="0.15" />
-        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_register.xml" value="0.22407407407407406" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_register.xml" value="0.266015625" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/fragment_seleccion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/item_partido.xml" value="0.2902949978623343" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/item_seleccion.xml" value="0.5" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/item_user.xml" value="0.5" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
-        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
+        <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/menu/activity_main_drawer.xml" value="0.2699167657550535" />
         <entry key="..\:/Users/Sena/Desktop/Session2 Entregable/session2Mobile/app/src/main/res/menu/main.xml" value="0.22407407407407406" />
       </map>
     </option>
