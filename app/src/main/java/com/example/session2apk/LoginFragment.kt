@@ -61,8 +61,6 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.layoutCont.minHeight = requireActivity().windowManager.defaultDisplay.height
-        println( binding.layoutCont.minHeight)
-        println( binding.layoutLogin.height)
         var anim = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_up)
 
         binding.txtSUser.animation = anim

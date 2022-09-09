@@ -227,6 +227,7 @@ private fun Validar(
 
 fun String.toImage(): Bitmap? {
     var byte = Base64.decode(this, Base64.DEFAULT)
+
     return BitmapFactory.decodeByteArray(byte, 0,byte.size )
 }
 fun String.toDate(format: String = "yyyy-MM-dd"): Calendar {

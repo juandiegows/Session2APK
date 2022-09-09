@@ -3,10 +3,12 @@ package com.example.session2apk.Helper
 import com.example.session2apk.Model.User
 
 object Singleton {
-    lateinit var userLogin:User
-    lateinit var userLoginEdit:User
+    var userLogin: User = User()
+    var userLoginEdit: User = User()
+
     enum class STAT {
         REGISTER, ADD, UPDATE
     }
-    var statusRegister:STAT = STAT.REGISTER
+
+    var statusRegister: STAT = STAT.REGISTER
 }
