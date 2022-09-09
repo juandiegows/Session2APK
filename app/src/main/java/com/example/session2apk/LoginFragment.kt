@@ -1,5 +1,8 @@
 package com.example.session2apk
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -53,6 +56,7 @@ class LoginFragment : Fragment() {
         )
     }
 
+    @SuppressLint("ObjectAnimatorBinding")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,7 +71,6 @@ class LoginFragment : Fragment() {
         binding.txtSPassword.animation = anim
         binding.btnLogin.animation = anim
         binding.txtRegister.animation = anim
-
 
         anim.startNow()
         /*  binding.txtSUser.animate().translationY(-1500f).setDuration(2000).withStartAction {
