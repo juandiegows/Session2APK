@@ -2,12 +2,14 @@ package com.example.session2apk
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.session2apk.Helper.*
 import com.example.session2apk.Model.Login
@@ -16,6 +18,7 @@ import com.example.session2apk.Network.CallServicesJD
 import com.example.session2apk.Network.ServicesJD
 import com.example.session2apk.databinding.FragmentLoginBinding
 import org.json.JSONObject
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -56,20 +59,33 @@ class LoginFragment : Fragment() {
     ): View? {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-      /*  binding.txtSUser.animate().translationY(-1500f).setDuration(2000).withStartAction {
-            binding.txtSPassword.animate().translationY(-1500f).setDuration(2000).withStartAction {
-                binding.txtSPassword.animate().translationY(-1500f).setDuration(2000)
-                    .withStartAction {
-                        binding.btnLogin.animate().translationY(-1500f).setDuration(2000)
-                            .withStartAction {
-                                binding.imgLogoLogin.animate().rotation(360f).setDuration(2000)
-                                    .start()
-                                binding.txtRegister.animate().alpha(0f).translationY(-1500f)
-                                    .setDuration(2000).start()
-                            }
-                    }
-            }
-        }*/
+
+        binding.layoutCont.minHeight = requireActivity().windowManager.defaultDisplay.height
+        println( binding.layoutCont.minHeight)
+        println( binding.layoutLogin.height)
+        var anim = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_up)
+
+        binding.txtSUser.animation = anim
+        binding.txtSPassword.animation = anim
+        binding.btnLogin.animation = anim
+        binding.txtRegister.animation = anim
+
+
+        anim.startNow()
+        /*  binding.txtSUser.animate().translationY(-1500f).setDuration(2000).withStartAction {
+              binding.txtSPassword.animate().translationY(-1500f).setDuration(2000).withStartAction {
+                  binding.txtSPassword.animate().translationY(-1500f).setDuration(2000)
+                      .withStartAction {
+                          binding.btnLogin.animate().translationY(-1500f).setDuration(2000)
+                              .withStartAction {
+                                  binding.imgLogoLogin.animate().rotation(360f).setDuration(2000)
+                                      .start()
+                                  binding.txtRegister.animate().alpha(0f).translationY(-1500f)
+                                      .setDuration(2000).start()
+                              }
+                      }
+              }
+          }*/
         listView = listOf(binding.txtSUser, binding.txtSPassword)
         eventos()
         return binding.root
@@ -107,7 +123,9 @@ class LoginFragment : Fragment() {
                                         binding.txtRegister.animate().alpha(1f).setDuration(2000)
                                             .start()
                                     } else if (status == HTTP.OK) {
-                                        Singleton.userLogin = JSONObject(response).toClass(User::class.java.name).Cast()
+                                        Singleton.userLogin =
+                                            JSONObject(response).toClass(User::class.java.name)
+                                                .Cast()
                                         startActivity(
                                             Intent(
                                                 requireContext(),

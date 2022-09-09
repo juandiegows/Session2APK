@@ -37,7 +37,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Session2APK.Fullscreen"></activity>
+            android:theme="@style/Theme.Session2APK.Fullscreen">
+
+
+        </activity>
     </application>
 
 </manifest>

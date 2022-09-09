@@ -22,5 +22,6 @@
         android:gravity="bottom"
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_menu_book_24"
-        android:title="about apk" />
+        android:title="about apk"
+        />
 </menu>
